@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Calculator = () => {
   const [loanAmount, setLoanAmount] = useState(50000);
@@ -59,9 +59,16 @@ const Calculator = () => {
     calculateResults(loanAmount, interest, tenure);
   };
 
+  useEffect(() => {
+    calculateResults(loanAmount, interest, tenure);
+  });
+
   //
   return (
-    <div className="container p-5 text-bg-danger">
+    <div
+      className="container p-5 text-bg-danger mt-5"
+      style={{ borderRadius: "20px" }}
+    >
       <div className="row">
         <p style={{ textTransform: "uppercase" }}>loan Calculator</p>
         {/* <h1>Hello world</h1> */}
@@ -73,7 +80,7 @@ const Calculator = () => {
       >
         <div className="row">
           <div className="col-12 row">
-            <div className="col-4">
+            <div className="col-sm-4">
               <label htmlFor="loanAmount" className="form-label">
                 Loan Amount
               </label>
@@ -103,7 +110,7 @@ const Calculator = () => {
               </ul>
               {/* </div> */}
             </div>
-            <div className="col-4">
+            <div className="col-sm-4">
               <label htmlFor="tenure" className="form-label">
                 Tenure (Months)
               </label>
@@ -133,7 +140,7 @@ const Calculator = () => {
               </ul>
               {/* </div> */}
             </div>
-            <div className="col-4">
+            <div className="col-sm-4">
               <label htmlFor="interest" className="form-label">
                 Interest Rate (In Percentage)
               </label>
@@ -166,9 +173,9 @@ const Calculator = () => {
           </div>
         </div>
         <br />
-        <div className="row pt-5">
-          <div className="col-6 row">
-            <div className="col-6">
+        <div className="row mt-4">
+          <div className="col-sm-6 row" style={{borderRadius: "20px", backgroundColor: "#ad3f37"}}>
+            <div className="col-sm-6">
               <label htmlFor="emi" className="form-label">
                 EMI Amount
               </label>
@@ -178,7 +185,7 @@ const Calculator = () => {
                 <span>*</span>
               </h5>
             </div>
-            <div className="col-6">
+            <div className="col-sm-6">
               <label htmlFor="interestPayable" className="form-label">
                 Interest Payable
               </label>
@@ -189,16 +196,18 @@ const Calculator = () => {
               </h5>
             </div>
           </div>
-          <div className="d-grid gap-2 col-6 mx-auto">
-            <div>
+          <div className="col-sm-6 row">
+            <div className="col-sm-2"></div>
+            <div className="col-sm-8">
               <button
                 type="submit"
-                className="btn btn-warning mb-3"
+                className="btn btn-warning mt-3 mb-3"
                 style={{ textTransform: "uppercase" }}
               >
                 Apply for Personal Loan
               </button>
             </div>
+            <div className="col-sm-2"></div>
           </div>
         </div>
       </form>
